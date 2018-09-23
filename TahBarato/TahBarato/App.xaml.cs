@@ -10,8 +10,8 @@ namespace TahBarato
         public App()
         {
             InitializeComponent();
-
-            MainPage = new NavigationPage(new HomePage());
+            MainPage = new Menu();
+            //MainPage = new NavigationPage(new HomePage());
         }
 
         protected override void OnStart()

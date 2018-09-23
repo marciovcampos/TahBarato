@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage    xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TahBarato.Menu">
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menu" Padding="0">
+            <ContentPage.Content>
+                <StackLayout>
+                    <Grid BackgroundColor="#2ecc71">
+                        <Grid.ColumnDefinitions>                           
+                            <ColumnDefinition Width="*"/>                            
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="150"/>                            
+                        </Grid.RowDefinitions>
+                        <Image Source="@drawable/title_view.png"></Image>
+                    </Grid>                   
+                    
+                    <TableView Intent="Menu">
+                        <TableSection>
+                            <ViewCell Tapped="GoHomePage">
+                                <StackLayout Padding="15,10">
+                                    <Label Text="Home" VerticalTextAlignment="Center"/>
+                                </StackLayout>
+                            </ViewCell>
+
+                            <ViewCell Tapped="GoSobrePage">
+                                <StackLayout Padding="15,10">
+                                    <Label Text="Sobre" VerticalTextAlignment="Center"/>
+                                </StackLayout>
+                            </ViewCell>
+                          
+                        </TableSection>
+                    </TableView>
+
+                </StackLayout>
+            </ContentPage.Content>
+        </ContentPage>
+    </MasterDetailPage.Master>
+</MasterDetailPage>
