@@ -2,6 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TahBarato.HomePage">
+    <NavigationPage.TitleView>
+        <StackLayout Margin="0" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Fill" >
+            <Image Source="@drawable/title_view.png" HeightRequest="50">
+            </Image>            
+        </StackLayout>
+    </NavigationPage.TitleView>
+    
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Welcome to Xamarin.Forms!"
