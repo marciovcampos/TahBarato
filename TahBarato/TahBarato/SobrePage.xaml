@@ -3,16 +3,34 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TahBarato.SobrePage">
     <NavigationPage.TitleView>
-        <StackLayout Margin="0" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Fill" >
-            <Image Source="@drawable/title_view.png" HeightRequest="50">
-            </Image>
-        </StackLayout>
+        <Label Text="SOBRE" FontSize="16" TextColor="White" VerticalTextAlignment="Center" />      
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms! Sobre Page"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Grid BackgroundColor="#2ecc71">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150"/>
+                </Grid.RowDefinitions>
+                <Image Source="@drawable/title_view.png"></Image>
+            </Grid>
+            
+            
+            <Label Text="Bem vindo ao Xamarin.Forms!"
+                FontSize="20"
+                Margin="10"
+                FontAttributes="Bold"
+                HorizontalOptions="Center" 
+                />
+
+            <Label Text="TahBarato é um aplicativo desenvolvido em Xamarin Forms para a disciplina de ARQUITETURA PARA APLICAÇÕES MÓVEIS para a pós-graduação de Desenvolvimento de Aplicações para Dispositivos Móveis na PUC Minas."
+                FontSize="16"
+                Margin="10"
+                HorizontalTextAlignment="Center"
+                HorizontalOptions="Center" />
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
