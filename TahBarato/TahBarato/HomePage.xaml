@@ -2,54 +2,49 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:TahBarato"
-             xmlns:extended="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"             
+             xmlns:extended="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
+             xmlns:view="clr-namespace:TahBarato.Views;assembly=TahBarato"
+             xmlns:ViewModels="clr-namespace:TahBarato.ViewModels"
              x:Class="TahBarato.HomePage">
-    <NavigationPage.TitleView>
-        <StackLayout Margin="0" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Fill" >
-            <Image Source="@drawable/title_view.png" HeightRequest="50">
-            </Image>            
-        </StackLayout>
-    </NavigationPage.TitleView>
-
-    <ContentPage.BindingContext>
-        <local:MainViewModel />
-    </ContentPage.BindingContext>
-    
-    <StackLayout>
-        <Label Text="Infinite Scroll" FontSize="40" HorizontalTextAlignment="Center" 
-               TextColor="Black" Margin="0,30" />
-
-        <ListView ItemsSource="{Binding Items}" 
-                  CachingStrategy="RecycleElement" 
-                  HasUnevenRows="True">
-            <ListView.Behaviors>
-                <extended:InfiniteScrollBehavior IsLoadingMore="{Binding IsBusy}" />
-            </ListView.Behaviors>
-
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid Padding="12">
-                            <Label Text="{Binding .}" FontSize="30" TextColor="Black" />
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-
-            <ListView.Footer>
-                <Grid Padding="6" IsVisible="{Binding IsBusy}">
-                    <Grid.Triggers>
-                        <Trigger TargetType="Grid" Property="IsVisible" Value="False">
-                            <Setter Property="HeightRequest" Value="0" />
-                        </Trigger>
-                    </Grid.Triggers>
-                    <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" 
-                                       Color="#2196F3" VerticalOptions="Center" 
-                                       HorizontalOptions="Center"/>
-                </Grid>
-            </ListView.Footer>
-        </ListView>
+  <NavigationPage.TitleView>
+    <StackLayout Margin="0"  Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Fill" >
+      <Image Source="@drawable/title_view.png" HeightRequest="50">
+      </Image>
     </StackLayout>
+  </NavigationPage.TitleView>
 
+  <ContentPage.BindingContext>
+    <!--<local:MainViewModel />-->
+    <ViewModels:PromocaoPageViewModel/>
+  </ContentPage.BindingContext>
 
+  <StackLayout>
+
+    <ListView x:Name="listView" SelectedItem="{Binding SelectedItem , Mode=TwoWay }"
+          RowHeight="150"
+          ItemsSource="{Binding PromocaoPageViewCollection}" HasUnevenRows="True"  >
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <view:PromocaoPage/>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+
+      <ListView.Footer>
+        <Grid Padding="6" IsVisible="{Binding IsBusy}">
+          <Grid.Triggers>
+            <Trigger TargetType="Grid" Property="IsVisible" Value="False">
+              <Setter Property="HeightRequest" Value="0" />
+            </Trigger>
+          </Grid.Triggers>
+          <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
+                             Color="{StaticResource colorPrimary}" VerticalOptions="Center"
+                             HorizontalOptions="Center"/>
+        </Grid>
+      </ListView.Footer>
+      
+    </ListView>
+
+  </StackLayout>
 </ContentPage>
