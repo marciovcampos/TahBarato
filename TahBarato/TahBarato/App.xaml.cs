@@ -11,7 +11,7 @@ namespace TahBarato
         {
             InitializeComponent();
 
-            MainPage = new SplashScreen();
+            MainPage = new NavigationPage(new HomePage());
         }
 
         protected override void OnStart()
